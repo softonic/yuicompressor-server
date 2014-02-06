@@ -17,6 +17,7 @@
 		<slf4j-log4j12.version>1.7.5</slf4j-log4j12.version>
 		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
 		<jdk.version>1.7</jdk.version>
+		<version>0.2.2</version>
 	</properties>
 
 	<dependencies>
