@@ -1,4 +1,4 @@
-package com.github.kpacha.yuicompressorserver.compressor;
+package com.github.softonic.yuicompressorserver.compressor;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
