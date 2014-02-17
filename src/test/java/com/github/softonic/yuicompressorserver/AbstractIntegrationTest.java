@@ -1,4 +1,4 @@
-package com.github.kpacha.yuicompressorserver;
+package com.github.softonic.yuicompressorserver;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -17,10 +17,10 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.kpacha.yuicompressorserver.integration.TestBrowser;
-import com.github.kpacha.yuicompressorserver.integration.TestResponse;
 import com.github.softonic.yuicompressorserver.Configuration;
 import com.github.softonic.yuicompressorserver.YuiCompressorServer;
+import com.github.softonic.yuicompressorserver.integration.TestBrowser;
+import com.github.softonic.yuicompressorserver.integration.TestResponse;
 import com.github.softonic.yuicompressorserver.utils.Md5Hasher;
 
 abstract public class AbstractIntegrationTest {
