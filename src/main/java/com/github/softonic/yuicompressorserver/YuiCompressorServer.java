@@ -75,7 +75,7 @@ public class YuiCompressorServer {
 	/**
 	 * Get the threadpool object.
 	 */
-	public QueuedThreadPool getThreadPool() {
+	private QueuedThreadPool getThreadPool() {
 		QueuedThreadPool threadPool = new QueuedThreadPool();
 		threadPool.setMaxThreads(MAX_THREADS);
 
@@ -85,7 +85,7 @@ public class YuiCompressorServer {
 	/**
 	 * Get the HttpConfiguration object.
 	 */
-	public HttpConfiguration getHttpConfiguration() {
+	private HttpConfiguration getHttpConfiguration() {
 		HttpConfiguration http_config = new HttpConfiguration();
 		http_config.setOutputBufferSize(OUTPUT_BUFFER_SIZE);
 		http_config.setRequestHeaderSize(REQUEST_HEADER_SIZE);
@@ -100,20 +100,33 @@ public class YuiCompressorServer {
 	 */
 	public void run() throws Exception {
 		server.start();
-		server.join();
+	}
+
+	public void shutdown() {
+		try {
+			server.stop();
+			server.destroy();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private Compressor getCompressor(Configuration configuration) {
 		Compressor compressor = new YuiCompressor(new AdapterFactory());
 		if (configuration.isCacheEnabled()) {
-			logger.debug("Init cache layer ...");
-			try {
-				compressor = new CachedCompressor(compressor, hasher,
-						getFreshCache());
-			} catch (CacheException e) {
-				logger.warn("CacheException while instantiating the cache layer. Working without cache. Message: "
-						+ e.getMessage());
-			}
+			compressor = getCachedCompressor(compressor);
+		}
+		return compressor;
+	}
+
+	private Compressor getCachedCompressor(Compressor compressor) {
+		logger.debug("Init cache layer ...");
+		try {
+			compressor = new CachedCompressor(compressor, hasher,
+					getFreshCache());
+		} catch (CacheException e) {
+			logger.warn("CacheException while instantiating the cache layer. Working without cache. Message: "
+					+ e.getMessage());
 		}
 		return compressor;
 	}
