@@ -1,4 +1,4 @@
-package com.github.kpacha.yuicompressorserver;
+package com.github.softonic.yuicompressorserver;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyLong;
