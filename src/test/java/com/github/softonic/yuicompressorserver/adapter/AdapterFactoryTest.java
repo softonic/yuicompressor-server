@@ -1,4 +1,4 @@
-package com.github.kpacha.yuicompressorserver.adapter;
+package com.github.softonic.yuicompressorserver.adapter;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
