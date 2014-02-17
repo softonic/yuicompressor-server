@@ -100,16 +100,15 @@ public class YuiCompressorServer {
 	 */
 	public void run() throws Exception {
 		server.start();
-		//server.join();
 	}
 
 	public void shutdown() {
-	    try {
-		server.stop();
-		server.destroy();
-	    } catch (Exception e) {
-		throw new RuntimeException(e);
-	    }
+		try {
+			server.stop();
+			server.destroy();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private Compressor getCompressor(Configuration configuration) {
@@ -123,10 +122,11 @@ public class YuiCompressorServer {
 	private Compressor getCachedCompressor(Compressor compressor) {
 		logger.debug("Init cache layer ...");
 		try {
-			compressor = new CachedCompressor(compressor, hasher, getFreshCache());
+			compressor = new CachedCompressor(compressor, hasher,
+					getFreshCache());
 		} catch (CacheException e) {
 			logger.warn("CacheException while instantiating the cache layer. Working without cache. Message: "
-	    			+ e.getMessage());
+					+ e.getMessage());
 		}
 		return compressor;
 	}
