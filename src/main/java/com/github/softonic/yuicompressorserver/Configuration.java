@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 
 public class Configuration {
 	private static final int DEFAULT_PORT = 8080;
-	private static final int DEFAULT_MAX_FORM_SIZE = 1024000;
+	private static final int DEFAULT_MAX_FORM_SIZE = 10240000;
 	private static Logger logger = Logger.getLogger(Configuration.class);
 
 	private CommandLine cmd;
