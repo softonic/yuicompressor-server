@@ -30,7 +30,7 @@ public class ConfigurationTest extends TestCase {
 
     public void testDefaultMaxFormSize() throws ParseException {
 	Configuration config = new Configuration(new String[] {});
-	assertEquals( 1024000, config.getMaxFormSize());
+	assertEquals( 10240000, config.getMaxFormSize());
     }
 
     public void testCustomMaxFormSize() throws ParseException {
